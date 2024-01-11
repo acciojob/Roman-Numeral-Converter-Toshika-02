@@ -10,6 +10,31 @@ function convertToRoman(num) {
     };
 
   //your code here
+	 for (let i = 0; i < obj.length; i++) {
+        let currentVal = obj[i][1];
+        if (currentVal === num) {
+            return obj[i];
+        }
+        if (currentVal > num) {
+            return obj[i - 1];
+        }
+    }
+
+    return obj[obj.length - 1];
+}
+
+let r = convertToRoman(383939);
+
+let n = 34, ans = "";
+
+while (n != 0) {
+    let roman = convertToRoman(n);
+    // n = 12
+    // getClosestRepresentation(12) => roman = [ "X" , 10 ]
+    ans += roman[0]; // ans += "X" 
+    n -= roman[1] // n = 12 - 10 = 2
+}
+console.log(ans);
 
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
