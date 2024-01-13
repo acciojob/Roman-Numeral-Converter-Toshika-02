@@ -28,11 +28,11 @@ let r = convertToRoman(383939);
 let n = 34, ans = "";
 
 while (n != 0) {
-    let roman = convertToRoman(n);
+    let roman = convertToRoman(num);
     // n = 12
     // getClosestRepresentation(12) => roman = [ "X" , 10 ]
     ans += roman[0]; // ans += "X" 
-    n -= roman[1] // n = 12 - 10 = 2
+    num -= roman[1] // n = 12 - 10 = 2
 }
 console.log(ans);
 
