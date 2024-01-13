@@ -10,31 +10,38 @@ function convertToRoman(num) {
     };
 
   //your code here
-	 let result = '';
-
-    for (let key in obj) {
-        const [symbol, value] = obj[key];
-
-        // Repeat the symbol while the value is less than or equal to num
-        while (value <= num) {
-            result += symbol;
-            num -= value;
+	 for (let i = 0; i < obj.length; i++) {
+        let currentVal = obj[i][1];
+        if (currentVal === num) {
+            return obj[i];
         }
-
-        // Check for special cases (e.g., IV, IX, XL, XC, etc.)
-        const nextKey = (key % 2 === 0) ? Number(key) + 2 : Number(key) + 1;
-        if (nextKey < 7 && num + obj[nextKey][1] >= value) {
-            result += obj[nextKey][0] + symbol;
-            num -= (value - obj[nextKey][1]);
+        if (currentVal > num) {
+            return obj[i - 1];
         }
     }
 
-    return result;
+    return obj[obj.length - 1];
+}
+
+let r = convertToRoman(383939);
+
+let n = 34, ans = "";
+
+while (n != 0) {
+    let roman = convertToRoman(n);
+    // n = 12
+    // getClosestRepresentation(12) => roman = [ "X" , 10 ]
+    ans += roman[0]; // ans += "X" 
+    n -= roman[1] // n = 12 - 10 = 2
+}
+console.log(ans);
 
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
  console.log(convertToRoman(36));
+
+
 
 
 // do not edit below this line
